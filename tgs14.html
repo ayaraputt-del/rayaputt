@@ -1,0 +1,777 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Black - Kopi Artisan Premium</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Variabel CSS untuk Tema --- */
+        :root {
+            --bg-dark: #1a1a1a;
+            --bg-darker: #0d0d0d;
+            --accent-gold: #d4af37;
+            --text-light: #f4f4f4;
+            --text-gray: #999999;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        /* --- Gaya Global --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--accent-gold);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- Header & Navigasi --- */
+        header {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .header-icons i {
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .header-icons i:hover {
+            color: var(--accent-gold);
+        }
+        .cart-icon {
+            position: relative;
+        }
+        #cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 50%;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        /* --- Bagian Hero --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            padding-top: 80px; /* Offset untuk header tetap */
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-gold);
+        }
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-gold);
+        }
+
+        /* --- Bagian Cerita Kami --- */
+        #cerita-kami {
+            background-color: var(--bg-darker);
+        }
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .story-text h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .story-text p {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+        .story-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* --- Bagian Produk --- */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background-color: var(--bg-darker);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+        }
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin: 15px 0 10px;
+        }
+        .product-card .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        .add-to-cart-btn {
+            background: none;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .add-to-cart-btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+        }
+
+        /* --- Bagian Mengapa Kami --- */
+        #mengapa-kami {
+            background-color: var(--bg-darker);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        .feature-item i {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .feature-item p {
+            color: var(--text-gray);
+        }
+
+        /* --- Bagian Testimoni --- */
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .testimonial {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--accent-gold);
+        }
+
+        /* --- Bagian Berlangganan --- */
+        #berlangganan {
+            background-color: var(--bg-darker);
+            text-align: center;
+        }
+        #berlangganan h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+        .newsletter-form button {
+            padding: 15px 25px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #0d0d0d;
+            padding: 40px 0 20px;
+            border-top: 1px solid #333;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        .footer-column a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-column a:hover {
+            color: var(--accent-gold);
+        }
+        .social-icons a {
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* --- Gaya Modal --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.8);
+            animation: fadeIn 0.3s;
+        }
+        .modal-content {
+            background-color: var(--bg-darker);
+            margin: 10% auto; 
+            padding: 30px;
+            border: 1px solid #444;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            animation: slideIn 0.4s;
+        }
+        .close {
+            color: var(--text-gray);
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: var(--accent-gold);
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #444;
+        }
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .cart-item-details {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .cart-item-details h4 {
+            margin-bottom: 5px;
+        }
+        .remove-from-cart-btn {
+            background: none;
+            border: none;
+            color: #b30000;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        .cart-total {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* --- Animasi --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* --- Desain Responsif --- */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo"><i class="fas fa-mug-hot"></i> Golden Black</a>
+            <nav>
+                <ul>
+                    <li><a href="#cerita-kami">Cerita Kami</a></li>
+                    <li><a href="#produk">Belanja</a></li>
+                    <li><a href="#mengapa-kami">Mengapa Kami</a></li>
+                    <li><a href="#berlangganan">Kontak</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <i class="fas fa-search"></i>
+                <div class="cart-icon" onclick="openCartModal()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== BAGIAN HERO ===== -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Rasakan Standar Emas dalam Kopi Hitam</h1>
+                <p>Di mana setiap biji menceritakan kisah rasa yang kaya, sumber yang etis, dan penyangraian artisanal. Ini bukan sekadar kopi; ini adalah sebuah ritual.</p>
+                <a href="#produk" class="btn">Jelajahi Kopi Kami</a>
+            </div>
+        </section>
+
+        <!-- ===== BAGIAN CERITA KAMI ===== -->
+        <section id="cerita-kami">
+            <div class="container story-content">
+                <div class="story-text">
+                    <h2>Dari Bukit Emas ke Cangkir Hitam Anda</h2>
+                    <p>Perjalanan kami dimulai di perkebunan ketinggian Ethiopia dan Kolombia, di mana biji Arabika terbaik dipetik dengan tangan di bawah sinar matahari keemasan. Kami percaya pada perdagangan langsung, memastikan setiap petani mendapatkan imbalan yang adil atas hasil kerja keras mereka.</p>
+                    <p>Di tempat sangrai kami, kami dengan mahir mengeluarkan rasa unik, bold, dan kompleks dari setiap biji. "Emas" dalam nama kami mewakili kualitas premium dan krim keemasan di atas espresso yang sempurna. "Hitam" adalah pengalaman yang dalam, kaya, dan murni di setiap cangkir.</p>
+                </div>
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1516446225352-74eda71eb062?q=80&w=2070&auto=format&fit=crop" alt="Biji kopi Indonesia">
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BAGIAN PRODUK ===== -->
+        <section id="produk">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 3rem; margin-bottom: 40px;">Koleksi Signature Kami</h2>
+                <div class="products-grid">
+                    <div class="product-card" onclick="openProductModal('Midnight Roast', 180000, 'Sangraian bold dan intens dengan sentuhan cokelat hitam dan cedar yang asap. Sempurna untuk espresso yang kuat untuk memulai hari Anda.', 'https://picsum.photos/seed/midnight-id/400/300.jpg')">
+                        <img src="k1.jpg" alt="Kopi Midnight Roast">
+                        <h3>Midnight Roast</h3>
+                        <p class="price">Rp 60.000</p>
+                        <button class="add-to-cart-btn">Tambah Cepat</button>
+                    </div>
+                    <div class="product-card" onclick="openProductModal('Golden Sunrise', 195000, 'Sangraian medium yang halus dengan sentuhan cerah sitrus, madu, dan akhiran yang bunga. Sebuah cangkir yang elegan dan seimbang.', 'https://picsum.photos/seed/sunrise-id/400/300.jpg')">
+                        <img src="k2.jpeg" alt="Kopi Golden Sunrise">
+                        <h3>Golden Sunrise</h3>
+                        <p class="price">Rp 55.000</p>
+                        <button class="add-to-cart-btn">Tambah Cepat</button>
+                    </div>
+                    <div class="product-card" onclick="openProductModal('Ethiopian Single Origin', 220000, 'Dari tempat kelahiran kopi. Sangraian ringan ini meledak dengan rasa buah dan mirip anggur, sebuah hidangan yang istimewa.', 'https://picsum.photos/seed/ethiopian-id/400/300.jpg')">
+                        <img src="k3.jpg" alt="Kopi Ethiopian Single Origin">
+                        <h3>Ethiopian Single Origin</h3>
+                        <p class="price">Rp 60.000</p>
+                        <button class="add-to-cart-btn">Tambah Cepat</button>
+                    </div>
+                    <div class="product-card" onclick="openProductModal('Velvet Decaf', 170000, 'Semua rasa, tanpa kafein. Kopi decaf yang kaya dan padat dengan sentuhan almond dan kakao. Sempurna untuk kapan saja.', 'https://picsum.photos/seed/decaf-id/400/300.jpg')">
+                        <img src="k4.jpg" alt="Kopi Velvet Decaf">
+                        <h3>Coklate Decaf</h3>
+                        <p class="price">Rp 50.000</p>
+                        <button class="add-to-cart-btn">Tambah Cepat</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BAGIAN MENGAPA KAMI ===== -->
+        <section id="mengapa-kami">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 3rem; margin-bottom: 40px;">Janji Golden Black</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>Sumber Etis</h3>
+                        <p>Kami bermitra langsung dengan petani, memastikan upah yang adil dan praktik berkelanjutan.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-fire-alt"></i>
+                        <h3>Disingrai Artisanal</h3>
+                        <p>Setiap batch disangrai dalam jumlah kecil hingga sempurna oleh master roaster kami.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-truck"></i>
+                        <h3>Kesegaran Terjamin</h3>
+                        <p>Kami mengirim dalam 24 jam setelah penyangraian untuk memberikan rasa puncak ke pintu Anda.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-award"></i>
+                        <h3>Berpenghargaan</h3>
+                        <p>Blend kami telah diakui karena kualitas dan rasa yang luar biasa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BAGIAN TESTIMONI ===== -->
+        <section id="testimoni">
+            <div class="container">
+                <div class="testimonial-container">
+                    <p class="testimonial">"Golden Black telah mengubah rutinitas pagi saya. Midnight Roast adalah kopi paling enak yang pernah saya rasakan. Anda bisa merasakan kualitasnya dalam setiap tegukan."</p>
+                    <p class="testimonial-author">- Rizky A., Pecinta Kopi</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BAGIAN BERLANGGANAN ===== -->
+        <section id="berlangganan">
+            <div class="container">
+                <h2>Dapatkan Diskon 10% untuk Pesanan Pertama Anda</h2>
+                <p>Berlangganan newsletter kami untuk mendapatkan penawaran eksklusif dan tips menyeduh kopi.</p>
+                <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+                    <input type="email" placeholder="Masukkan alamat email Anda" required>
+                    <button type="submit" class="btn">Berlangganan</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Golden Black</h3>
+                    <p>Kopi artisan premium, diantar ke rumah Anda. Rasakan standar emas.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Belanja</h3>
+                    <ul>
+                        <li><a href="#">Semua Kopi</a></li>
+                        <li><a href="#">Blend Espresso</a></li>
+                        <li><a href="#">Single Origin</a></li>
+                        <li><a href="#">Paket Hadiah</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Pelajari</h3>
+                    <ul>
+                        <li><a href="#">Panduan Menyeduh</a></li>
+                        <li><a href="#">Cerita Kami</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Keberlanjutan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Dukungan</h3>
+                    <ul>
+                        <li><a href="#">Hubungi Kami</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Kebijakan Pengiriman</a></li>
+                        <li><a href="#">Kebijakan Pengembalian</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Golden Black Coffee. Semua Hak Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== MODAL ===== -->
+    <!-- Modal Detail Produk -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeProductModal()">&times;</span>
+            <div style="display: flex; gap: 20px;">
+                <img id="modal-product-image" src="" alt="Gambar Produk" style="width: 200px; height: 200px; object-fit: cover; border-radius: 5px;">
+                <div>
+                    <h2 id="modal-product-title" style="margin-bottom: 10px;"></h2>
+                    <p id="modal-product-description" style="color: var(--text-gray); margin-bottom: 20px;"></p>
+                    <p id="modal-product-price" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 20px;"></p>
+                    <button class="btn" onclick="addToCartFromModal()">Tambah ke Keranjang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Keranjang Belanja -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCartModal()">&times;</span>
+            <h2 style="margin-bottom: 20px;">Keranjang Belanja Anda</h2>
+            <div id="cart-items-container">
+                <!-- Item keranjang akan dimasukkan secara dinamis di sini -->
+            </div>
+            <div class="cart-total">
+                Total: Rp <span id="cart-total">0</span>
+            </div>
+            <button class="btn checkout-btn">Lanjut ke Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Logika Keranjang Belanja ---
+        let cart = [];
+        let currentProduct = {};
+
+        function updateCartUI() {
+            const cartCountElement = document.getElementById('cart-count');
+            cartCountElement.textContent = cart.length;
+        }
+
+        function openProductModal(name, price, description, image) {
+            currentProduct = { name, price, description, image };
+            document.getElementById('modal-product-title').innerText = name;
+            document.getElementById('modal-product-price').innerText = `Rp ${price.toLocaleString('id-ID')}`;
+            document.getElementById('modal-product-description').innerText = description;
+            document.getElementById('modal-product-image').src = image;
+            document.getElementById('product-modal').style.display = 'block';
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').style.display = 'none';
+        }
+
+        function addToCartFromModal() {
+            cart.push({ ...currentProduct, id: Date.now() }); // ID unik sederhana
+            updateCartUI();
+            closeProductModal();
+            // Opsional: Tampilkan pesan konfirmasi cepat
+            alert(`${currentProduct.name} ditambahkan ke keranjang!`);
+        }
+
+        function openCartModal() {
+            renderCartItems();
+            document.getElementById('cart-modal').style.display = 'block';
+        }
+
+        function closeCartModal() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        function renderCartItems() {
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = ''; // Bersihkan item yang ada
+            let total = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p>Keranjang Anda kosong.</p>';
+            } else {
+                cart.forEach(item => {
+                    total += item.price;
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>Rp ${item.price.toLocaleString('id-ID')}</p>
+                        </div>
+                        <button class="remove-from-cart-btn" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
+                    `;
+                    container.appendChild(itemElement);
+                });
+            }
+            document.getElementById('cart-total').innerText = total.toLocaleString('id-ID');
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            updateCartUI();
+            renderCartItems(); // Render ulang modal keranjang
+        }
+
+        // --- Form Berlangganan ---
+        function handleNewsletterSubmit(event) {
+            event.preventDefault(); // Cegah reload halaman
+            const email = event.target.querySelector('input[type="email"]').value;
+            alert(`Terima kasih telah berlangganan dengan ${email}! Kode diskon 10% Anda adalah EMAS10.`);
+            event.target.reset(); // Bersihkan form
+        }
+
+        // --- Tutup modal saat mengklik di luar ---
+        window.onclick = function(event) {
+            const productModal = document.getElementById('product-modal');
+            const cartModal = document.getElementById('cart-modal');
+            if (event.target == productModal) {
+                productModal.style.display = "none";
+            }
+            if (event.target == cartModal) {
+                cartModal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
